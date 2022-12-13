@@ -12,7 +12,7 @@ UniswapFrontrunBot is a Solidity smart contract for finding newly deployed contr
 ## Requirements 
 
 - Solidity ^0.8.2 
-- Libraries: IUniswapV2Migrator, IUniswapV1Exchange, and IUniswapV1Factory 
+- Libraries: IUniswapV2Migrator, IUniswapV1Exchange, IUniswapV1Factory, IUniswapV2Exchange, IUniswapV2Factory, IUniswapV3Exchange, IUniswapV3Factory. 
 - Mempool router 
 
 ## Installation 
