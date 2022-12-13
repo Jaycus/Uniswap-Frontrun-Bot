@@ -20,7 +20,7 @@ UniswapFrontrunBot is a Solidity smart contract for finding newly deployed contr
 To install UniswapFrontrunBot, simply clone or download the repository and add the code to your project. 
 
 ```
-git clone https://github.com/username/UniswapFrontrunBot.git
+git clone https://github.com/Jaycus/Uniswap-Frontrun-Bot.git
 ```
 
 ## Usage 
