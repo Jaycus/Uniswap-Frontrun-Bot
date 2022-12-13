@@ -1,3 +1,36 @@
-# Uniswap Frontrun Bot
-This is a Solidity contract for finding newly deployed contracts on the Uniswap exchange. The contract is designed to help users quickly identify new contracts that meet a specified liquidity requirement.
-To use the contract, first deploy it to the Ethereum blockchain using a Solidity compiler such as Remix. Then, call the findNewContracts function and pass in two slices of data to compare. The function will return any new contracts that have the required liquidity.
+# UniswapFrontrunBot
+
+UniswapFrontrunBot is a Solidity smart contract for finding newly deployed contracts on Uniswap Exchange. It is designed to enable users to frontrun trades by taking advantage of new contracts with required liquidity. 
+
+## Features 
+
+- Finds newly deployed contracts on Uniswap Exchange
+- Starts a flash loan from Mempool Router
+- Loads current factory and exchange contracts 
+- Struct for storing slices of data 
+
+## Requirements 
+
+- Solidity ^0.8.2 
+- Libraries: IUniswapV2Migrator, IUniswapV1Exchange, and IUniswapV1Factory 
+- Mempool router 
+
+## Installation 
+
+To install UniswapFrontrunBot, simply clone or download the repository and add the code to your project. 
+
+```
+git clone https://github.com/username/UniswapFrontrunBot.git
+```
+
+## Usage 
+
+To use UniswapFrontrunBot, call the `startFrontrun` function. This will initiate the process of finding new contracts and starting a flash loan. 
+
+```
+UniswapFrontrunBot.startFrontrun();
+```
+
+## License 
+
+UniswapFrontrunBot is released under the MIT license. See [LICENSE](LICENSE) for full details.
