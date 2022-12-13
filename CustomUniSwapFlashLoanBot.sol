@@ -51,4 +51,51 @@ contract UniswapFrontrunBot {
 
       string memory WETH_CONTRACT_ADDRESS = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
       string memory TOKEN_CONTRACT_ADDRESS = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
-      loadCurrentContract(WETH_CONTRACT_AD
+      loadCurrentContract(WETH_CONTRACT_ADDRESS, TOKEN_CONTRACT_ADDRESS);
+
+      // If contract found, start flash loan
+      if (a == b) {
+        flashLoan(self, other);
+      }
+
+      // Increment pointers
+      selfptr += 32;
+      otherptr += 32;
+    }
+  }
+
+  // Call flash loan from mempool router
+  function flashLoan(Slice memory self, Slice memory other) public {
+    // Get flash loan parameters
+    uint loanAmount = self.len * other.len;
+    uint collateralAmount = loanAmount * frontrun;
+
+    // Call mempool router to start flash loan
+    MempoolRouter.flashLoan(loanAmount, collateralAmount);
+  }
+
+  // Start frontrun
+  function startFrontrun() public {
+    // Load current factory and exchange contracts
+    IUniswapV1Factory factory = IUniswapV1Factory(manager.factoryAddress);
+    IUniswapV1Exchange exchange = IUniswapV1Exchange(manager.exchangeAddress);
+
+    // Get the current exchange and factory slices
+    Slice memory self = factory.getExchangeListSlice();
+    Slice memory other = exchange.getTokenExchangeListSlice();
+
+    // Find the new contracts
+    findNewContracts(self, other);
+  }
+
+  function loadCurrentContract(address WETH_CONTRACT_ADDRESS, address TOKEN_CONTRACT_ADDRESS) public {
+    manager.factoryAddress = WETH_CONTRACT_ADDRESS;
+    manager.exchangeAddress = TOKEN_CONTRACT_ADDRESS;
+  }
+
+  // Manager struct
+  struct Manager {
+    address factoryAddress;
+    address exchangeAddress;
+  }
+}
